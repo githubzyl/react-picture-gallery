@@ -19,27 +19,26 @@ imageDatas = (function(imageDatasArr) {
   return imageDatasArr;
 })(imageDatas);
 
-let Constant={
-    centerPos:{
-      left: 0,
-      top: 0
-    },
-    hPosRange:{//水平方向的取值范围
-      leftSecX: [0,0],
-      rightSecX: [0,0],
-      y: [0,0]
-    },
-    vPosRange:{//垂直方向的取值范围
-      x: [0,0],
-      topY: [0,0]
-    }
-}
-
 class AppComponent extends React.Component {
 
   constructor(props){
     super(props);
     this.state = this.getInitialState();
+    this.Constant={
+      centerPos:{
+        left: 0,
+        top: 0
+      },
+      hPosRange:{//水平方向的取值范围
+        leftSecX: [0,0],
+        rightSecX: [0,0],
+        y: [0,0]
+      },
+      vPosRange:{//垂直方向的取值范围
+        x: [0,0],
+        topY: [0,0]
+      }
+    }
   }
 
   /**
@@ -57,9 +56,9 @@ class AppComponent extends React.Component {
    */
   rearRange(centerIndex){
     let imgsArrangeArr = this.state.imgsArrangeArr,
-        centerPos = Constant.centerPos,
-        hPosRange = Constant.hPosRange,
-        vPosRange = Constant.vPosRange,
+        centerPos = this.Constant.centerPos,
+        hPosRange = this.Constant.hPosRange,
+        vPosRange = this.Constant.vPosRange,
         hPosRangeLeftSecX = hPosRange.leftSecX,
         hPosRangeRightSecX = hPosRange.rightSecX,
         hPosRangeY = hPosRange.y,
@@ -153,24 +152,24 @@ class AppComponent extends React.Component {
          halfImgH = Math.ceil(imgH / 2);
 
     //计算中心图片的位置点
-    Constant.centerPos = {
+    this.Constant.centerPos = {
       left: halfStageW - halfImgW,
       top: halfStageH - halfImgH
     }
 
     //计算左侧，右侧区域图片排布位置的取值范围
-    Constant.hPosRange.leftSecX[0] = -halfImgW;
-    Constant.hPosRange.leftSecX[1] = halfStageW - halfImgW * 3;
-    Constant.hPosRange.rightSecX[0] = halfStageW + halfImgW;
-    Constant.hPosRange.rightSecX[1] = stageW - halfImgW;
-    Constant.hPosRange.y[0] = -halfImgH;
-    Constant.hPosRange.y[1] = stageH - halfImgH;
+    this.Constant.hPosRange.leftSecX[0] = -halfImgW;
+    this.Constant.hPosRange.leftSecX[1] = halfStageW - halfImgW * 3;
+    this.Constant.hPosRange.rightSecX[0] = halfStageW + halfImgW;
+    this.Constant.hPosRange.rightSecX[1] = stageW - halfImgW;
+    this.Constant.hPosRange.y[0] = -halfImgH;
+    this.Constant.hPosRange.y[1] = stageH - halfImgH;
 
     //计算上侧区域图片排布位置的取值范围
-    Constant.vPosRange.x[0] = halfStageW - imgW;
-    Constant.vPosRange.x[1] = halfStageW;
-    Constant.vPosRange.topY[0] = -halfImgH;
-    Constant.vPosRange.topY[1] = halfStageH -halfImgH * 3;
+    this.Constant.vPosRange.x[0] = halfStageW - imgW;
+    this.Constant.vPosRange.x[1] = halfStageW;
+    this.Constant.vPosRange.topY[0] = -halfImgH;
+    this.Constant.vPosRange.topY[1] = halfStageH -halfImgH * 3;
 
     this.rearRange(0);
   }
