@@ -24,6 +24,7 @@ html, body{
   height: 100%;
   overflow: hidden;
   background-color: #ddd;
+  perspective: 1800px; /*景深值。值越大，其他改变发生时，效果越小。！！属性无效*/
 }
 /* image -- end */
 
